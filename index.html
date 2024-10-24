@@ -17,12 +17,7 @@
       background: #ff4d4d;
       color: white;
       overflow-x: hidden;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       min-height: 100vh;
-      flex-direction: column;
     }
 
     body::before {
@@ -87,13 +82,18 @@
 
     .tab-content {
       display: none;
-      padding: 100px 50px;
+      padding: 50px;
       min-height: 100vh;
       animation: fadeIn 0.5s ease-in-out forwards;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
     }
 
     .tab-content.active {
-      display: block;
+      display: flex;
     }
 
     @keyframes fadeIn {
@@ -123,6 +123,7 @@
       display: flex;
       gap: 20px;
       justify-content: center;
+      margin-top: 20px;
     }
 
     ul.skills-list li {
@@ -169,6 +170,24 @@
     <p>I specialize in the configuration, setup, and management of Minecraft servers. Whether you're running a small community or a large network, my expertise will help you streamline server performance and optimize gameplay experience.</p>
   </section>
 
+  <!-- Skills Section -->
+  <section id="skills" class="tab-content">
+    <h2>Skills</h2>
+    <ul class="skills-list">
+      <li>Java</li>
+      <li>Python</li>
+      <li>HTML</li>
+      <li>CSS</li>
+    </ul>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="tab-content">
+    <h2>Contact</h2>
+    <p>Feel free to reach me out on questions or current jobs!</p>
+    <p><a href="mailto:totally.bad.social@gmail.com" style="color: #ffeb3b; text-decoration: none;">totally.bad.social@gmail.com</a></p>
+  </section>
+
   <script>
     function openTab(tabId) {
       const tabs = document.querySelectorAll('.tab-content');
@@ -181,4 +200,3 @@
 
 </body>
 </html>
-
