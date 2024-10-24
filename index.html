@@ -129,11 +129,11 @@
       background-color: rgba(0, 0, 0, 0.9);
     }
 
-    .socials {
+    .socials, .skills-list {
       margin-top: 30px;
     }
 
-    .socials a {
+    .socials a, .skills-list a {
       display: inline-block;
       margin: 10px;
       padding: 10px 20px;
@@ -144,9 +144,15 @@
       transition: transform 0.3s ease, background-color 0.3s ease;
     }
 
-    .socials a:hover {
+    .socials a:hover, .skills-list a:hover {
       background-color: rgba(255, 255, 255, 0.4);
       transform: scale(1.1);
+    }
+
+    .skills-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
     }
   </style>
 </head>
@@ -182,13 +188,14 @@
   <!-- Skills Section -->
   <section id="skills">
     <h2>My Skills</h2>
-    <p>I am proficient in several programming languages and technologies, which allow me to build dynamic applications and websites. Some of the languages and technologies I work with include:<br>
-      <strong>Java</strong>: Experience in building scalable applications.<br>
-      <strong>Python</strong>: Skilled in scripting and automation tasks.<br>
-      <strong>HTML</strong>: Proficient in structuring content on the web.<br>
-      <strong>CSS</strong>: Expertise in designing responsive and visually appealing web pages.<br>
-      <strong>C++</strong>: Knowledgeable in performance-oriented programming.
-    </p>
+    <p>I am proficient in several programming languages and technologies, which allow me to build dynamic applications and websites:</p>
+    <div class="skills-list">
+      <a href="#">Java</a>
+      <a href="#">Python</a>
+      <a href="#">HTML</a>
+      <a href="#">CSS</a>
+      <a href="#">C++</a>
+    </div>
   </section>
 
   <!-- Contact Section -->
