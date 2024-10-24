@@ -88,8 +88,7 @@
       transform: scale(1.1);
     }
 
-    .tab-content {
-      display: none;
+    section {
       padding: 100px 50px;
       min-height: 100vh;
       display: flex;
@@ -97,19 +96,10 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      position: absolute;
-      top: 0;
-      width: 100%;
-      animation: fadeIn 1s ease-in-out forwards;
-    }
-
-    .tab-content.active {
-      display: flex;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
+      position: relative;
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.5);
+      margin-top: 60px; /* Space for fixed navbar */
     }
 
     h2 {
@@ -128,7 +118,7 @@
       max-width: 800px;
       line-height: 1.8;
       margin: 20px auto;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.7);
       padding: 20px;
       border-radius: 10px;
       transition: transform 0.3s ease, background-color 0.3s ease;
@@ -136,7 +126,7 @@
 
     p:hover {
       transform: scale(1.05);
-      background-color: rgba(0, 0, 0, 0.7);
+      background-color: rgba(0, 0, 0, 0.9);
     }
 
     .socials {
@@ -165,22 +155,22 @@
   <nav>
     <h1>Standard</h1>
     <ul>
-      <li><a href="javascript:void(0);" onclick="openTab('home')">Home</a></li>
-      <li><a href="javascript:void(0);" onclick="openTab('services')">Services</a></li>
-      <li><a href="javascript:void(0);" onclick="openTab('skills')">Skills</a></li>
-      <li><a href="javascript:void(0);" onclick="openTab('contact')">Contact</a></li>
-      <li><a href="javascript:void(0);" onclick="openTab('socials')">Socials</a></li>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#socials">Socials</a></li>
     </ul>
   </nav>
 
   <!-- Home Section -->
-  <section id="home" class="tab-content active">
+  <section id="home">
     <h2>Welcome to My Portfolio</h2>
     <p>I have <strong>4 years of experience</strong>, including <strong>years of development expertise</strong>.<br> Currently, I am <strong>looking for development jobs</strong> in configuration and development.</p>
   </section>
 
   <!-- Services Section -->
-  <section id="services" class="tab-content">
+  <section id="services">
     <h2>My Services</h2>
     <p>I offer a variety of services including:<br>
        <strong>Discord Bot Development</strong>,<br> 
@@ -190,7 +180,7 @@
   </section>
 
   <!-- Skills Section -->
-  <section id="skills" class="tab-content">
+  <section id="skills">
     <h2>My Skills</h2>
     <p>Some of the languages and technologies I work with:<br>
       <strong>Java</strong>, <strong>Python</strong>, <strong>HTML</strong>, <strong>CSS</strong>, <strong>C++</strong>.
@@ -198,7 +188,7 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="tab-content">
+  <section id="contact">
     <h2>Contact Me</h2>
     <p>If you have any questions or are interested in cooperation/support, feel free to contact me:<br>
       <a href="mailto:totally.bad.social@gmail.com" style="color: #ffd700;">totally.bad.social@gmail.com</a>
@@ -206,7 +196,7 @@
   </section>
 
   <!-- Socials Section -->
-  <section id="socials" class="tab-content">
+  <section id="socials">
     <h2>Socials</h2>
     <div class="socials">
       <a href="https://youtube.com/@standardgd" target="_blank">YouTube</a>
@@ -216,14 +206,6 @@
   </section>
 
   <script>
-    function openTab(tabId) {
-      const tabs = document.querySelectorAll('.tab-content');
-      tabs.forEach(tab => {
-        tab.classList.remove('active');
-      });
-      document.getElementById(tabId).classList.add('active');
-    }
-
     function copyToClipboard(text) {
       const el = document.createElement('textarea');
       el.value = text;
