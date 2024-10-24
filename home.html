@@ -14,7 +14,7 @@
 
     body {
       font-family: Arial, sans-serif;
-      background: #ff4d4d; 
+      background: #ff4d4d;
       color: white;
       overflow-x: hidden;
     }
@@ -44,8 +44,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 10px 20px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 15px 20px;
       z-index: 100;
     }
 
@@ -79,14 +79,20 @@
       transform: scale(1.1);
     }
 
-    section {
-      min-height: 100vh;
+    .tab-content {
+      display: none;
       padding: 100px 50px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+      min-height: 100vh;
+      animation: fadeIn 0.5s ease-in-out forwards;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h2 {
@@ -98,22 +104,26 @@
       font-size: 18px;
       max-width: 600px;
       line-height: 1.6;
+      margin: 20px auto;
     }
 
-    #home {
-      background: rgba(0, 0, 0, 0.2);
+    ul.skills-list {
+      list-style-type: none;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
     }
 
-    #services {
-      background: rgba(0, 0, 0, 0.2);
+    ul.skills-list li {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 18px;
+      transition: transform 0.3s ease;
     }
 
-    #skills {
-      background: rgba(0, 0, 0, 0.3);
-    }
-
-    #contact {
-      background: rgba(0, 0, 0, 0.4);
+    ul.skills-list li:hover {
+      transform: scale(1.1);
     }
 
     #home h2 {
@@ -142,35 +152,35 @@
   </style>
 </head>
 <body>
-  
+
   <nav>
     <h1>My Website</h1>
     <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="javascript:void(0);" onclick="openTab('home')">Home</a></li>
+      <li><a href="javascript:void(0);" onclick="openTab('services')">Services</a></li>
+      <li><a href="javascript:void(0);" onclick="openTab('skills')">Skills</a></li>
+      <li><a href="javascript:void(0);" onclick="openTab('contact')">Contact</a></li>
     </ul>
   </nav>
 
   <!-- Home Section -->
-  <section id="home">
+  <section id="home" class="tab-content active">
     <h2>Hey!</h2>
     <p>I am <span>Standard</span>, 17 years old and a professional Minecraft and Discord Developer for Servers!<br>
       I have <span>3 years of experience</span> and am currently <span>free to hire</span>.</p>
   </section>
 
   <!-- Service Section -->
-  <section id="services">
+  <section id="services" class="tab-content">
     <h2>Development for Minecraft Servers</h2>
     <p>I specialize in the configuration, setup, and management of Minecraft servers. Whether you're running a small community or a large network, my expertise will help you streamline server performance and optimize gameplay experience.</p>
   </section>
 
   <!-- Skills Section -->
-  <section id="skills">
+  <section id="skills" class="tab-content">
     <h2>Skills</h2>
     <p>My technical skills include expertise in several programming languages and technologies:</p>
-    <ul>
+    <ul class="skills-list">
       <li>Java</li>
       <li>HTML & CSS</li>
       <li>Python</li>
@@ -178,7 +188,7 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact">
+  <section id="contact" class="tab-content">
     <h2>Contact</h2>
     <p>Have a question or want to collaborate? Reach out to me at:</p>
     <p><strong>Email: </strong>totally.bad.social@gmail.com</p>
@@ -189,6 +199,16 @@
     <p>&copy; 2024 Standard's Portfolio. All Rights Reserved.</p>
   </footer>
 
+  <script>
+    function openTab(tabId) {
+      const tabs = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => {
+        tab.classList.remove('active');
+      });
+
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
+  
 </body>
 </html>
-
