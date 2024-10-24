@@ -133,18 +133,19 @@
       margin-top: 30px;
     }
 
-    .socials a, .skills-list a {
+    .socials a, .skills-list span {
       display: inline-block;
       margin: 10px;
       padding: 10px 20px;
       border-radius: 5px;
       background-color: rgba(255, 255, 255, 0.2);
       color: #ffd700;
-      text-decoration: none;
+      text-decoration: none; /* Entferne die Unterstreichung */
       transition: transform 0.3s ease, background-color 0.3s ease;
+      cursor: default; /* Mauszeiger zeigt keinen Link an */
     }
 
-    .socials a:hover, .skills-list a:hover {
+    .socials a:hover, .skills-list span:hover {
       background-color: rgba(255, 255, 255, 0.4);
       transform: scale(1.1);
     }
@@ -190,11 +191,11 @@
     <h2>My Skills</h2>
     <p>I am proficient in several programming languages and technologies, which allow me to build dynamic applications and websites:</p>
     <div class="skills-list">
-      <a href="#">Java</a>
-      <a href="#">Python</a>
-      <a href="#">HTML</a>
-      <a href="#">CSS</a>
-      <a href="#">C++</a>
+      <span>Java</span>
+      <span>Python</span>
+      <span>HTML</span>
+      <span>CSS</span>
+      <span>C++</span>
     </div>
   </section>
 
