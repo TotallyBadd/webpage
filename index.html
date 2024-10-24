@@ -212,3 +212,15 @@
       <a href="https://github.com/TotallyBadd" target="_blank"><i class="fab fa-github"></i>GitHub</a>
     </div>
   </
+
+  <script>
+    function copyToClipboard(text) {
+      const el = document.createElement('textarea');
+      el.value = text;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      alert('Discord username copied to clipboard: ' + text);
+    }
+  </script>
