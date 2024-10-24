@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Standard's Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
       margin: 0;
@@ -134,7 +135,8 @@
     }
 
     .socials a, .skills-list span {
-      display: inline-block;
+      display: inline-flex; /* Flex-Layout für Icon und Text */
+      align-items: center; /* Zentriere das Icon */
       margin: 10px;
       padding: 10px 20px;
       border-radius: 5px;
@@ -143,6 +145,7 @@
       text-decoration: none; /* Entferne die Unterstreichung */
       transition: transform 0.3s ease, background-color 0.3s ease;
       cursor: default; /* Mauszeiger zeigt keinen Link an */
+      font-size: 18px; /* Schriftgröße anpassen */
     }
 
     .socials a:hover, .skills-list span:hover {
@@ -154,6 +157,16 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+    }
+
+    /* Für Icons in der sozialen Liste */
+    .socials i {
+      margin-right: 10px; /* Abstand zwischen Icon und Text */
+    }
+
+    /* Für Icons in der Skills Liste */
+    .skills-list i {
+      margin-right: 10px; /* Abstand zwischen Icon und Text */
     }
   </style>
 </head>
@@ -191,11 +204,11 @@
     <h2>My Skills</h2>
     <p>I am proficient in several programming languages and technologies, which allow me to build dynamic applications and websites:</p>
     <div class="skills-list">
-      <span>Java</span>
-      <span>Python</span>
-      <span>HTML</span>
-      <span>CSS</span>
-      <span>C++</span>
+      <span><i class="fab fa-java"></i>Java</span>
+      <span><i class="fab fa-python"></i>Python</span>
+      <span><i class="fab fa-html5"></i>HTML</span>
+      <span><i class="fab fa-css3-alt"></i>CSS</span>
+      <span><i class="fab fa-cuttlefish"></i>C++</span>
     </div>
   </section>
 
@@ -211,9 +224,9 @@
   <section id="socials">
     <h2>Socials</h2>
     <div class="socials">
-      <a href="https://youtube.com/@standardgd" target="_blank">YouTube</a>
-      <a href="javascript:void(0);" onclick="copyToClipboard('standard.wieb')">Discord</a>
-      <a href="https://github.com/TotallyBadd" target="_blank">GitHub</a>
+      <a href="https://youtube.com/@standardgd" target="_blank"><i class="fab fa-youtube"></i>YouTube</a>
+      <a href="javascript:void(0);" onclick="copyToClipboard('standard.wieb')"><i class="fab fa-discord"></i>Discord</a>
+      <a href="https://github.com/TotallyBadd" target="_blank"><i class="fab fa-github"></i>GitHub</a>
     </div>
   </section>
 
