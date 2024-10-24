@@ -249,4 +249,21 @@
   <!-- Footer with Copyright -->
   <footer>
     <p class="copyright">
-      <span>
+      <span>&copy; 2024 Totally_Bad. All rights reserved.</span>
+    </p>
+  </footer>
+
+  <script>
+    function copyToClipboard(text) {
+      var dummy = document.createElement("textarea");
+      document.body.appendChild(dummy);
+      dummy.value = text;
+      dummy.select();
+      document.execCommand("copy");
+      document.body.removeChild(dummy);
+      alert("Discord username copied to clipboard: " + text);
+    }
+  </script>
+
+</body>
+</html>
