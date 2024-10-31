@@ -1,303 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tᴏᴛᴀʟʟʏ's Pᴏʀᴛғᴏʟɪᴏ</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tᴏᴛᴀʟʟʏ's Pᴏʀᴛғᴏʟɪᴏ</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" href="https://img.icons8.com/color/48/000000/t.png" type="image/png">
 
-    <!-- Favicon -->
-    <link rel="icon" href="https://img.icons8.com/color/48/000000/t.png" type="image/png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+    body {
+      font-family: 'Arial', sans-serif;
+      background: url('https://static.vecteezy.com/system/resources/previews/021/322/732/original/futuristic-innovative-graphic-background-modern-tech-geometric-wallpaper-free-vector.jpg') no-repeat center center fixed; 
+      background-size: cover;
+      color: #ecf0f1;
+      overflow-x: hidden;
+      min-height: 100vh;
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards;
+    }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background: url('https://static.vecteezy.com/system/resources/previews/021/322/732/original/futuristic-innovative-graphic-background-modern-tech-geometric-wallpaper-free-vector.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: #ecf0f1;
-            overflow-x: hidden;
-            min-height: 100vh;
-            position: relative;
-        }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
 
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 15px 30px;
-            z-index: 100;
-        }
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px 30px;
+      z-index: 100;
+    }
 
-        nav h1 {
-            font-size: 24px;
-            color: #ffd700;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
+    nav h1 {
+      font-size: 24px;
+      color: #ffd700;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
 
-        nav h1:hover {
-            color: #ffcc00;
-            transform: scale(1.2);
-        }
+    nav h1:hover {
+      color: #ffcc00;
+      transform: scale(1.2);
+    }
 
-        nav ul {
-            list-style-type: none;
-            display: flex;
-            gap: 20px;
-        }
+    nav ul {
+      list-style-type: none;
+      display: flex;
+      gap: 20px;
+    }
 
-        nav ul li {
-            display: inline;
-        }
+    nav ul li {
+      display: inline;
+    }
 
-        nav ul li a {
-            text-decoration: none;
-            color: #ecf0f1;
-            padding: 10px 20px;
-            font-size: 18px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
+    nav ul li a {
+      text-decoration: none;
+      color: #ecf0f1;
+      padding: 10px 20px;
+      font-size: 18px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
 
-        nav ul li a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
-        }
+    nav ul li a.active {
+      color: #ffcc00;
+      background-color: rgba(255, 255, 255, 0.3);
+    }
 
-        section {
-            padding: 100px 50px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            background: rgba(44, 62, 80, 0.9);
-            margin-top: 60px;
-            border-radius: 10px;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
+    nav ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: scale(1.1);
+    }
 
-        section.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    section {
+      opacity: 0;
+      padding: 100px 50px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      background: rgba(44, 62, 80, 0.9);
+      margin-top: 60px;
+      border-radius: 10px;
+      transition: opacity 1s ease-in-out;
+    }
 
-        h2 {
-            font-size: 40px;
-            margin-bottom: 20px;
-            color: #ffd700;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
+    section.show {
+      opacity: 1;
+      animation: fadeSlideIn 1s ease-in-out forwards;
+    }
 
-        h2:hover {
-            color: #ffcc00;
-            transform: scale(1.1);
-        }
+    @keyframes fadeSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        p {
-            font-size: 22px;
-            max-width: 800px;
-            line-height: 1.8;
-            margin: 20px auto;
-            background-color: rgba(52, 73, 94, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
+    h2 {
+      font-size: 40px;
+      margin-bottom: 20px;
+      color: #ffd700;
+      transition: color 0.3s ease;
+      animation: slideIn 1.5s ease;
+    }
 
-        p:hover {
-            transform: scale(1.05);
-            background-color: rgba(52, 73, 94, 1);
-        }
+    h2:hover {
+      color: #ffcc00;
+    }
 
-        .socials, .skills-list {
-            margin-top: 30px;
-        }
+    @keyframes slideIn {
+      from { transform: translateX(-100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
 
-        .socials a, .skills-list span {
-            display: inline-flex;
-            align-items: center;
-            margin: 10px;
-            padding: 10px 20px;
-            border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #ffd700;
-            text-decoration: none;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-            cursor: default;
-            font-size: 18px;
-        }
+    p {
+      font-size: 22px;
+      max-width: 800px;
+      line-height: 1.8;
+      margin: 20px auto;
+      background-color: rgba(52, 73, 94, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
 
-        .socials a:hover, .skills-list span:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
-        }
+    p:hover {
+      transform: scale(1.05);
+      background-color: rgba(52, 73, 94, 1);
+    }
 
-        .skills-list {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+    .socials a, .skills-list span {
+      display: inline-flex;
+      align-items: center;
+      margin: 10px;
+      padding: 10px 20px;
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #ffd700;
+      text-decoration: none;
+      font-size: 18px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
 
-        .socials i {
-            margin-right: 10px;
-        }
+    .socials a:hover, .skills-list span:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: scale(1.15);
+      box-shadow: 0px 5px 15px rgba(255, 255, 0, 0.3);
+    }
 
-        .skills-list i {
-            margin-right: 10px;
-        }
+    .skills-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
 
-        footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            text-align: center;
-            padding: 10px 0;
-            z-index: 100;
-        }
+    .socials i, .skills-list i {
+      margin-right: 10px;
+    }
 
-        .copyright {
-            font-size: 16px;
-            color: #ffd700;
-            animation: fadeIn 2s ease-in-out infinite alternate;
-        }
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      text-align: center;
+      padding: 10px 0;
+      z-index: 100;
+    }
 
-        .copyright span {
-            font-size: 18px;
-        }
+    .copyright {
+      font-size: 16px;
+      color: #ffd700;
+      animation: fadeIn 2s ease-in-out infinite alternate;
+    }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0.5;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-    </style>
+    @keyframes fadeIn {
+      from { opacity: 0.5; }
+      to { opacity: 1; }
+    }
+  </style>
 </head>
 <body>
 
-    <nav>
-        <h1>Tᴏᴛᴀʟʟʏ_Bᴀᴅ</h1>
-        <ul>
-            <li><a href="#home">Hᴏᴍᴇ</a></li>
-            <li><a href="#services">Sᴇʀᴠɪᴄᴇs</a></li>
-            <li><a href="#skills">Sᴋɪʟʟs</a></li>
-            <li><a href="#contact">Cᴏɴᴛᴀᴄᴛ</a></li>
-            <li><a href="#socials">Sᴏᴄɪᴀʟs</a></li>
-            <li><a href="https://docs.google.com/document/d/1vVRyKCs5yTblLjpo_N1l2451LSsCgd03Sw9VTpprFK8/edit?usp=sharing">Pʀᴏᴊᴇᴄᴛs</a></li>
-        </ul>
-    </nav>
+  <nav>
+    <h1>Tᴏᴛᴀʟʟʏ_Bᴀᴅ</h1>
+    <ul>
+      <li><a href="#home" class="nav-link">Hᴏᴍᴇ</a></li>
+      <li><a href="#services" class="nav-link">Sᴇʀᴠɪᴄᴇs</a></li>
+      <li><a href="#skills" class="nav-link">Sᴋɪʟʟs</a></li>
+      <li><a href="#contact" class="nav-link">Cᴏɴᴛᴀᴄᴛ</a></li>
+      <li><a href="#socials" class="nav-link">Sᴏᴄɪᴀʟs</a></li>
+      <li><a href="https://docs.google.com/document/d/1vVRyKCs5yTblLjpo_N1l2451LSsCgd03Sw9VTpprFK8/edit?usp=sharing">Pʀᴏᴊᴇᴄᴛs</a></li>
+    </ul>
+  </nav>
 
-    <!-- Home Section -->
-    <section id="home" class="show">
-        <h2>Wᴇʟᴄᴏᴍᴇ ᴛᴏ ᴍʏ Pᴏʀᴛғᴏʟɪᴏ</h2>
-        <p>I have <strong>4 years of experience</strong> in various aspects of Discord/Minecraft development, including extensive knowledge of coding practices. I am <strong>actively seeking development job opportunities</strong> where I can improve my skills in development. My goal is to obtain even more knowledge by helping out small or large servers!</p>
-    </section>
+  <!-- Sections -->
+  <section id="home">
+    <h2>Wᴇʟᴄᴏᴍᴇ ᴛᴏ ᴍʏ Pᴏʀᴛғᴏʟɪᴏ</h2>
+    <p>I have <strong>4 years of experience</strong> in various aspects of Discord/Minecraft development, including extensive knowledge of coding practices, I am <strong>actively seeking development job opportunities</strong> where I can improve my skills in development. My goal is to obtain even more knowledge by helping out small or large Servers!</p>
+  </section>
 
-    <!-- Services Section -->
-    <section id="services">
-        <h2>Mʏ Sᴇʀᴠɪᴄᴇs</h2>
-        <p>I offer a variety of services tailored to meet your needs, including:<br>
-            <strong>Discord Bot Development</strong>: Custom bot creation for enhancing your Discord server functionality and user experience.<br>
-            <strong>Minecraft Configuration</strong>: Expert configuration of servers to ensure optimal performance and player satisfaction.<br>
-            <strong>Minecraft Development</strong>: Creative development solutions for mods and plugins that enhance gameplay and community engagement.<br>
-            <strong>Server Optimization</strong>: Optimizing your Server to ensure the best performance possible & very high quality.<br>
-            <strong>Ressource Packs</strong>: Designing & Developing ressourcepacks completely free for your Server to make it look as awesome as possible.
-        </p>
-    </section>
+  <section id="services">
+    <h2>Mʏ Sᴇʀᴠɪᴄᴇs</h2>
+    <p>I offer a variety of services tailored to meet your needs, including:<br>
+       <strong>Discord Bot Development</strong>: Custom bot creation for enhancing your Discord server functionality and user experience.<br>
+       <strong>Minecraft Configuration</strong>: Expert configuration of servers to ensure optimal performance and player satisfaction.<br> 
+       <strong>Minecraft Development</strong>: Creative development solutions for mods and plugins that enhance gameplay and community engagement.<br>
+       <strong>Server Optimization</strong>: Optimizing your Server to ensure the best performance possible & very high quality.<br>
+       <strong>Resource Packs</strong>: Custom-made texture packs to enhance the visual experience on your servers.
+    </p>
+  </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <h2>Mʏ Sᴋɪʟʟs</h2>
-        <p>Here are some of the key skills I bring to the table:</p>
-        <div class="skills-list">
-            <span><i class="fab fa-js-square"></i> JavaScript</span>
-            <span><i class="fab fa-node-js"></i> Node.js</span>
-            <span><i class="fab fa-html5"></i> HTML</span>
-            <span><i class="fab fa-css3-alt"></i> CSS</span>
-            <span><i class="fab fa-java"></i> Java</span>
-            <span><i class="fab fa-python"></i> Python</span>
-            <span><i class="fab fa-github"></i> GitHub</span>
-        </div>
-    </section>
+  <section id="skills">
+    <h2>Sᴋɪʟʟs</h2>
+    <p>Here are some of the key skills I bring to the table:</p>
+    <div class="skills-list">
+      <span><i class="fab fa-js-square"></i> JavaScript</span>
+      <span><i class="fab fa-node-js"></i> Node.js</span>
+      <span><i class="fab fa-html5"></i> HTML5</span>
+      <span><i class="fab fa-css3-alt"></i> CSS3</span>
+      <span><i class="fab fa-python"></i> Python</span>
+      <span><i class="fas fa-cube"></i> Minecraft Configuration</span>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Cᴏɴᴛᴀᴄᴛ Mᴇ</h2>
-        <p>If you'd like to get in touch, feel free to reach out via the following methods:</p>
-        <p>Email: <a href="mailto:totallybad@example.com" style="color: #ffd700;">totallybad@example.com</a></p>
-    </section>
+  <section id="contact">
+    <h2>Cᴏɴᴛᴀᴄᴛ Mᴇ</h2>
+    <p>If you have any questions, are interested in collaboration, or need support, feel free to reach out to me at:<br>
+      <a href="mailto:totally.bad.social@gmail.com" style="color: #ffd700;">totally.bad.social@gmail.com</a><br>
+    </p>
+  </section>
 
-    <!-- Socials Section -->
-    <section id="socials">
-        <h2>Sᴏᴄɪᴀʟ Mᴇᴅɪᴀ</h2>
-        <p>You can find me on the following platforms:</p>
-        <div class="socials">
-            <a href="https://github.com/TotallyBad" target="_blank"><i class="fab fa-github"></i>GitHub</a>
-            <a href="https://twitter.com/TotallyBad" target="_blank"><i class="fab fa-twitter"></i>Twitter</a>
-            <a href="https://www.linkedin.com/in/totallybad" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a>
-        </div>
-    </section>
+  <section id="socials">
+    <h2>Sᴏᴄɪᴀʟs</h2>
+    <div class="socials">
+      <a href="https://github.com/totallybadd" target="_blank"><i class="fab fa-github"></i>GitHub</a>
+      <a href="https://youtube.com/@totally_bad" target="_blank"><i class="fab fa-youtube"></i>YouTube</a>
+      <a href="javascript:void(0);" onclick="copyToClipboard('totally.bad')"><i class="fab fa-discord"></i>Discord</a>
+    </div>
+  </section>
 
-    <footer>
-        <div class="copyright">
-            <span>&copy; 2024 Totally_Bad. All Rights Reserved.</span>
-        </div>
-    </footer>
+  <footer>
+    <p class="copyright">
+      <span>&copy; 2024 Tᴏᴛᴀʟʟʏ_Bᴀᴅ. Aʟʟ ʀɪɢʜᴛs ʀᴇsᴇʀᴠᴇᴅ.</span>
+    </p>
+  </footer>
 
-    <script>
+  <!-- Script  -->
+  <script>
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Discord username copied to clipboard: " + text);
+      });
+    }
+
+    // Change URL and scroll stuff
+    let timeout;
+    window.addEventListener('scroll', () => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
         const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('nav ul li a');
-
-        const options = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                    history.pushState(null, '', `#${entry.target.id}`);
-                } else {
-                    entry.target.classList.remove('show');
-                }
-            });
-        }, options);
-
+        let currentSection = '';
         sections.forEach(section => {
-            observer.observe(section);
+          const sectionTop = section.offsetTop - 80;
+          if (scrollY >= sectionTop) {
+            currentSection = section.getAttribute("id");
+          }
         });
+        history.replaceState(null, null, '#' + currentSection);
+      }, 100);
+    });
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                targetSection.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-    </script>
+    // Reveal sections on scroll thing
+    window.addEventListener('scroll', () => {
+      document.querySelectorAll("section").forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop < window.innerHeight) {
+          section.classList.add("show");
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
