@@ -216,7 +216,7 @@
     </ul>
   </nav>
 
-  <!-- Sections -->
+  <!-- Sections stuff -->
   <section id="home">
     <h2>Wᴇʟᴄᴏᴍᴇ ᴛᴏ ᴍʏ Pᴏʀᴛғᴏʟɪᴏ</h2>
     <p>I have <strong>4 years of experience</strong> in various aspects of Discord/Minecraft development, including extensive knowledge of coding practices, I am <strong>actively seeking development job opportunities</strong> where I can improve my skills in development. My goal is to obtain even more knowledge by helping out small or large Servers!</p>
@@ -229,12 +229,13 @@
        <strong>Minecraft Configuration</strong>: Expert configuration of servers to ensure optimal performance and player satisfaction.<br> 
        <strong>Minecraft Development</strong>: Creative development solutions for mods and plugins that enhance gameplay and community engagement.<br>
        <strong>Server Optimization</strong>: Optimizing your Server to ensure the best performance possible & very high quality.<br>
-       <strong>Resource Packs</strong>: Designing & Developing resource packs completely free for your servers.<br> 
+       <strong>Resource Packs</strong>: Custom-made texture packs to enhance the visual experience on your servers.
     </p>
   </section>
 
   <section id="skills">
-    <h2>Skills</h2>
+    <h2>Sᴋɪʟʟs</h2>
+    <p>Here are some of the key skills I bring to the table:</p>
     <div class="skills-list">
       <span><i class="fab fa-js-square"></i> JavaScript</span>
       <span><i class="fab fa-node-js"></i> Node.js</span>
@@ -247,8 +248,8 @@
 
   <section id="contact">
     <h2>Cᴏɴᴛᴀᴄᴛ Mᴇ</h2>
-    <p>If you have any questions, are interested in collaboration, or need support, feel free to reach out to me:<br>
-      <a href="mailto:totally.bad.social@gmail.com" style="color: #ffd700;">totally.bad.social@gmail.com</a><br> I look forward to connecting with you and discussing potential opportunities!<br><strong>INFO:</strong> It might take some time until I review requests or support so please stay patient.
+    <p>If you have any questions, are interested in collaboration, or need support, feel free to reach out to me at:<br>
+      <a href="mailto:totally.bad.social@gmail.com" style="color: #ffd700;">totally.bad.social@gmail.com</a><br>
     </p>
   </section>
 
@@ -267,6 +268,7 @@
     </p>
   </footer>
 
+  <!-- Smoth Scroll and URL etc. -->
   <script>
     function copyToClipboard(text) {
       navigator.clipboard.writeText(text).then(() => {
@@ -274,29 +276,23 @@
       });
     }
 
+    let timeout;
     window.addEventListener('scroll', () => {
-      const sections = document.querySelectorAll('section');
-      const navLinks = document.querySelectorAll('nav ul li a');
-
-      let currentSection = '';
-
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 80;
-        if (scrollY >= sectionTop) {
-          currentSection = section.getAttribute("id");
-        }
-      });
-
-      history.pushState(null, null, '#' + currentSection);
-
-      navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === '#' + currentSection) {
-          link.classList.add("active");
-        }
-      });
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        const sections = document.querySelectorAll('section');
+        let currentSection = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 80;
+          if (scrollY >= sectionTop) {
+            currentSection = section.getAttribute("id");
+          }
+        });
+        history.replaceState(null, null, '#' + currentSection);
+      }, 100);
     });
 
+    // Reveal sections on scroll
     window.addEventListener('scroll', () => {
       document.querySelectorAll("section").forEach(section => {
         const sectionTop = section.getBoundingClientRect().top;
