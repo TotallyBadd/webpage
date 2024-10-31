@@ -19,10 +19,16 @@
       font-family: 'Arial', sans-serif;
       background: url('https://static.vecteezy.com/system/resources/previews/021/322/732/original/futuristic-innovative-graphic-background-modern-tech-geometric-wallpaper-free-vector.jpg') no-repeat center center fixed; 
       background-size: cover;
-      background-attachment: fixed;
       color: #ecf0f1;
       overflow-x: hidden;
       min-height: 100vh;
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     nav {
@@ -98,6 +104,18 @@
 
     section.show {
       opacity: 1;
+      animation: fadeSlideIn 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     h2 {
@@ -105,10 +123,16 @@
       margin-bottom: 20px;
       color: #ffd700;
       transition: color 0.3s ease;
+      animation: slideIn 1.5s ease;
     }
 
     h2:hover {
       color: #ffcc00;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(-100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
     }
 
     p {
@@ -183,11 +207,11 @@
   <nav>
     <h1>Tᴏᴛᴀʟʟʏ_Bᴀᴅ</h1>
     <ul>
-      <li><a href="#home">Hᴏᴍᴇ</a></li>
-      <li><a href="#services">Sᴇʀᴠɪᴄᴇs</a></li>
-      <li><a href="#skills">Sᴋɪʟʟs</a></li>
-      <li><a href="#contact">Cᴏɴᴛᴀᴄᴛ</a></li>
-      <li><a href="#socials">Sᴏᴄɪᴀʟs</a></li>
+      <li><a href="#home" class="nav-link">Hᴏᴍᴇ</a></li>
+      <li><a href="#services" class="nav-link">Sᴇʀᴠɪᴄᴇs</a></li>
+      <li><a href="#skills" class="nav-link">Sᴋɪʟʟs</a></li>
+      <li><a href="#contact" class="nav-link">Cᴏɴᴛᴀᴄᴛ</a></li>
+      <li><a href="#socials" class="nav-link">Sᴏᴄɪᴀʟs</a></li>
       <li><a href="https://docs.google.com/document/d/1vVRyKCs5yTblLjpo_N1l2451LSsCgd03Sw9VTpprFK8/edit?usp=sharing">Pʀᴏᴊᴇᴄᴛs</a></li>
     </ul>
   </nav>
@@ -205,19 +229,19 @@
        <strong>Minecraft Configuration</strong>: Expert configuration of servers to ensure optimal performance and player satisfaction.<br> 
        <strong>Minecraft Development</strong>: Creative development solutions for mods and plugins that enhance gameplay and community engagement.<br>
        <strong>Server Optimization</strong>: Optimizing your Server to ensure the best performance possible & very high quality.<br>
-       <strong>Ressource Packs</strong>: Designing & Developing resource packs completely free for your Server to make it look as awesome as possible.
+       <strong>Resource Packs</strong>: Designing & Developing resource packs completely free for your servers.<br> 
     </p>
   </section>
 
   <section id="skills">
-    <h2>Mʏ Sᴋɪʟʟs</h2>
-    <p>I am proficient in several programming languages and technologies, which allow me to build dynamic applications and websites:</p>
+    <h2>Skills</h2>
     <div class="skills-list">
-      <span><i class="fab fa-java"></i>Java</span>
-      <span><i class="fab fa-python"></i>Python</span>
-      <span><i class="fab fa-html5"></i>HTML</span>
-      <span><i class="fab fa-css3-alt"></i>CSS</span>
-      <span><i class="fab fa-cuttlefish"></i>C++</span>
+      <span><i class="fab fa-js-square"></i> JavaScript</span>
+      <span><i class="fab fa-node-js"></i> Node.js</span>
+      <span><i class="fab fa-html5"></i> HTML5</span>
+      <span><i class="fab fa-css3-alt"></i> CSS3</span>
+      <span><i class="fab fa-python"></i> Python</span>
+      <span><i class="fas fa-cube"></i> Minecraft Configuration</span>
     </div>
   </section>
 
@@ -245,29 +269,29 @@
 
   <script>
     function copyToClipboard(text) {
-      var dummy = document.createElement("textarea");
-      document.body.appendChild(dummy);
-      dummy.value = text;
-      dummy.select();
-      document.execCommand("copy");
-      document.body.removeChild(dummy);
-      alert("Discord username copied to clipboard: " + text);
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Discord username copied to clipboard: " + text);
+      });
     }
 
     window.addEventListener('scroll', () => {
       const sections = document.querySelectorAll('section');
       const navLinks = document.querySelectorAll('nav ul li a');
 
-      let current = "";
+      let currentSection = '';
 
       sections.forEach(section => {
-        const sectionTop = section.offsetTop - 60;
-        if (scrollY >= sectionTop) current = section.getAttribute("id");
+        const sectionTop = section.offsetTop - 80;
+        if (scrollY >= sectionTop) {
+          currentSection = section.getAttribute("id");
+        }
       });
+
+      history.pushState(null, null, '#' + currentSection);
 
       navLinks.forEach(link => {
         link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + current) {
+        if (link.getAttribute("href") === '#' + currentSection) {
           link.classList.add("active");
         }
       });
