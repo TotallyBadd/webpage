@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tᴏᴛᴀʟʟʏ's Pᴏʀᴛғᴏʟɪᴏ</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+Can you make (without changing any code [just adding some] that if you change sections it underlines the box right above (with the yellow / golden color)
+
   <link rel="icon" href="https://img.icons8.com/color/48/000000/t.png" type="image/png">
 
   <style>
@@ -79,11 +82,6 @@
     nav ul li a.active {
       color: #ffcc00;
       background-color: rgba(255, 255, 255, 0.3);
-    }
-
-    nav ul li a.active-underline {
-      text-decoration: underline;
-      text-decoration-color: #ffd700; /* Yellow/Golden color */
     }
 
     nav ul li a:hover {
@@ -233,71 +231,81 @@
        <strong>Discord Bot Development</strong>: Custom bot creation for enhancing your Discord server functionality and user experience.<br>
        <strong>Minecraft Configuration</strong>: Expert configuration of servers to ensure optimal performance and player satisfaction.<br> 
        <strong>Minecraft Development</strong>: Creative development solutions for mods and plugins that enhance gameplay and community engagement.<br>
-       <strong>Server Optimization</strong>: Optimizing your Server to ensure the best performance possible & very user friendly.</p>
+       <strong>Server Optimization</strong>: Optimizing your Server to ensure the best performance possible & very high quality.<br>
+       <strong>Resource Packs</strong>: Custom-made texture packs to enhance the visual experience on your servers.
+    </p>
   </section>
 
   <section id="skills">
-    <h2>Mʏ Sᴋɪʟʟs</h2>
-    <p>Here are some of the skills I possess:</p>
+    <h2>Sᴋɪʟʟs</h2>
+    <p>Here are some of the key skills I bring to the table:</p>
     <div class="skills-list">
-      <span><i class="fas fa-code"></i> JavaScript</span>
-      <span><i class="fas fa-code"></i> Python</span>
-      <span><i class="fas fa-code"></i> HTML/CSS</span>
-      <span><i class="fas fa-code"></i> Discord.js</span>
-      <span><i class="fas fa-code"></i> Minecraft Plugins</span>
+      <span><i class="fab fa-js-square"></i> JavaScript</span>
+      <span><i class="fab fa-node-js"></i> Node.js</span>
+      <span><i class="fab fa-html5"></i> HTML5</span>
+      <span><i class="fab fa-css3-alt"></i> CSS3</span>
+      <span><i class="fab fa-python"></i> Python</span>
+      <span><i class="fas fa-cube"></i> Minecraft Configuration</span>
     </div>
   </section>
 
   <section id="contact">
     <h2>Cᴏɴᴛᴀᴄᴛ Mᴇ</h2>
-    <p>If you're interested in working together or have any questions, feel free to reach out!</p>
-    <div class="socials">
-      <a href="mailto:your-email@example.com"><i class="fas fa-envelope"></i> Email</a>
-      <a href="https://twitter.com/yourtwitter"><i class="fab fa-twitter"></i> Twitter</a>
-      <a href="https://github.com/yourgithub"><i class="fab fa-github"></i> GitHub</a>
-    </div>
+    <p>If you have any questions, are interested in collaboration, or need support, feel free to reach out to me at:<br>
+      <a href="mailto:totally.bad.social@gmail.com" style="color: #ffd700;">totally.bad.social@gmail.com</a><br>
+    </p>
   </section>
 
   <section id="socials">
-    <h2>Fᴏʟʟᴏᴡ Mᴇ</h2>
-    <p>Stay connected and follow me on social media!</p>
+    <h2>Sᴏᴄɪᴀʟs</h2>
     <div class="socials">
-      <a href="https://twitter.com/yourtwitter"><i class="fab fa-twitter"></i> Twitter</a>
-      <a href="https://github.com/yourgithub"><i class="fab fa-github"></i> GitHub</a>
-      <a href="https://www.linkedin.com/in/yourlinkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/totallybadd" target="_blank"><i class="fab fa-github"></i>GitHub</a>
+      <a href="https://youtube.com/@totally_bad" target="_blank"><i class="fab fa-youtube"></i>YouTube</a>
+      <a href="javascript:void(0);" onclick="copyToClipboard('totally.bad')"><i class="fab fa-discord"></i>Discord</a>
     </div>
   </section>
 
   <footer>
-    <div class="copyright">© 2024 Tᴏᴛᴀʟʟʏ_Bᴀᴅ. All Rights Reserved.</div>
+    <p class="copyright">
+      <span>&copy; 2024 Tᴏᴛᴀʟʟʏ_Bᴀᴅ. Aʟʟ ʀɪɢʜᴛs ʀᴇsᴇʀᴠᴇᴅ.</span>
+    </p>
   </footer>
 
+  <!-- Script  -->
   <script>
-    let timeout;
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Discord username copied to clipboard: " + text);
+      });
+    }
 
+    // Change URL and scroll stuff
+    let timeout;
     window.addEventListener('scroll', () => {
       clearTimeout(timeout);
       timeout = setTimeout(() => {
-          const sections = document.querySelectorAll('section');
-          let currentSection = '';
-          sections.forEach(section => {
-              const sectionTop = section.offsetTop - 80;
-              if (scrollY >= sectionTop) {
-                  currentSection = section.getAttribute("id");
-              }
-          });
-          history.replaceState(null, null, '#' + currentSection);
-          
-          document.querySelectorAll('nav ul li a').forEach(link => {
-              link.classList.remove('active-underline');
-          });
-
-          const currentLink = document.querySelector(`nav ul li a[href="#${currentSection}"]`);
-          if (currentLink) {
-              currentLink.classList.add('active-underline');
+        const sections = document.querySelectorAll('section');
+        let currentSection = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 80;
+          if (scrollY >= sectionTop) {
+            currentSection = section.getAttribute("id");
           }
+        });
+        history.replaceState(null, null, '#' + currentSection);
       }, 100);
     });
+
+    // Reveal sections on scroll thing
+    window.addEventListener('scroll', () => {
+      document.querySelectorAll("section").forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop < window.innerHeight) {
+          section.classList.add("show");
+        }
+      });
+    });
   </script>
+
 </body>
 </html>
