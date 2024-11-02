@@ -196,6 +196,10 @@
       animation: fadeIn 2s ease-in-out infinite alternate;
     }
 
+     .active-link {
+    color: #ffcc00;
+  }
+
     @keyframes fadeIn {
       from { opacity: 0.5; }
       to { opacity: 1; }
@@ -269,40 +273,49 @@
   </footer>
 
   <!-- Script  -->
-  <script>
-    function copyToClipboard(text) {
-      navigator.clipboard.writeText(text).then(() => {
-        alert("Discord username copied to clipboard: " + text);
-      });
-    }
-
-    // Change URL and scroll stuff
-    let timeout;
-    window.addEventListener('scroll', () => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        const sections = document.querySelectorAll('section');
-        let currentSection = '';
-        sections.forEach(section => {
-          const sectionTop = section.offsetTop - 80;
-          if (scrollY >= sectionTop) {
-            currentSection = section.getAttribute("id");
-          }
-        });
-        history.replaceState(null, null, '#' + currentSection);
-      }, 100);
+<script>
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert("Discord username copied to clipboard: " + text);
     });
+  }
 
-    // Reveal sections on scroll thing
-    window.addEventListener('scroll', () => {
-      document.querySelectorAll("section").forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        if (sectionTop < window.innerHeight) {
-          section.classList.add("show");
+  let timeout;
+  window.addEventListener('scroll', () => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      const sections = document.querySelectorAll('section');
+      let currentSection = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 80;
+        if (scrollY >= sectionTop) {
+          currentSection = section.getAttribute("id");
         }
       });
+
+      // Update URL without reloading the page
+      history.replaceState(null, null, '#' + currentSection);
+
+      // Add and remove active class
+      document.querySelectorAll('nav ul li a').forEach(link => {
+        link.classList.remove('active-link'); // Remove active class from all links
+        if (link.getAttribute('href').substring(1) === currentSection) {
+          link.classList.add('active-link'); // Add to the current section link
+        }
+      });
+    }, 100);
+  });
+
+  // Reveal sections on scroll function
+  window.addEventListener('scroll', () => {
+    document.querySelectorAll("section").forEach(section => {
+      const sectionTop = section.getBoundingClientRect().top;
+      if (sectionTop < window.innerHeight) {
+        section.classList.add("show");
+      }
     });
-  </script>
+  });
+</script>
 
 </body>
 </html>
