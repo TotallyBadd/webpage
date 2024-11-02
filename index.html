@@ -1,321 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tᴏᴛᴀʟʟʏ's Pᴏʀᴛғᴏʟɪᴏ</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="icon" href="https://img.icons8.com/color/48/000000/t.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Drawing Tool</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+        .toolbar {
+            margin-bottom: 10px;
+        }
 
-    body {
-      font-family: 'Arial', sans-serif;
-      background: url('https://static.vecteezy.com/system/resources/previews/021/322/732/original/futuristic-innovative-graphic-background-modern-tech-geometric-wallpaper-free-vector.jpg') no-repeat center center fixed; 
-      background-size: cover;
-      color: #ecf0f1;
-      overflow-x: hidden;
-      min-height: 100vh;
-      opacity: 0;
-      animation: fadeIn 1.5s ease forwards;
-    }
+        canvas {
+            border: 1px solid #000;
+            cursor: crosshair;
+            margin-top: 10px;
+            background-color: #fff;
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+        button {
+            margin-left: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
 
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(0, 0, 0, 0.8);
-      padding: 15px 30px;
-      z-index: 100;
-    }
+        #projectList {
+            margin: 20px;
+            list-style: none;
+            padding: 0;
+        }
 
-    nav h1 {
-      font-size: 24px;
-      color: #ffd700;
-      letter-spacing: 2px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
+        #projectList li {
+            background: #e0e0e0;
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
 
-    nav h1:hover {
-      color: #ffcc00;
-      transform: scale(1.2);
-    }
+        #projectList li:hover {
+            background: #d0d0d0;
+        }
 
-    nav ul {
-      list-style-type: none;
-      display: flex;
-      gap: 20px;
-    }
-
-    nav ul li {
-      display: inline;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: #ecf0f1;
-      padding: 10px 20px;
-      font-size: 18px;
-      border-radius: 5px;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-
-    nav ul li a.active {
-      color: #ffcc00;
-      background-color: rgba(255, 255, 255, 0.3);
-    }
-
-    nav ul li a:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-      transform: scale(1.1);
-    }
-
-    section {
-      opacity: 0;
-      padding: 100px 50px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      background: rgba(44, 62, 80, 0.9);
-      margin-top: 60px;
-      border-radius: 10px;
-      transition: opacity 1s ease-in-out;
-    }
-
-    section.show {
-      opacity: 1;
-      animation: fadeSlideIn 1s ease-in-out forwards;
-    }
-
-    @keyframes fadeSlideIn {
-      from {
-        opacity: 0;
-        transform: translateY(50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    h2 {
-      font-size: 40px;
-      margin-bottom: 20px;
-      color: #ffd700;
-      transition: color 0.3s ease;
-      animation: slideIn 1.5s ease;
-    }
-
-    h2:hover {
-      color: #ffcc00;
-    }
-
-    @keyframes slideIn {
-      from { transform: translateX(-100px); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-
-    p {
-      font-size: 22px;
-      max-width: 800px;
-      line-height: 1.8;
-      margin: 20px auto;
-      background-color: rgba(52, 73, 94, 0.8);
-      padding: 20px;
-      border-radius: 10px;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-    }
-
-    p:hover {
-      transform: scale(1.05);
-      background-color: rgba(52, 73, 94, 1);
-    }
-
-      .active-link {
-    color: #ffcc00;
-  }
-
-    .socials a, .skills-list span {
-      display: inline-flex;
-      align-items: center;
-      margin: 10px;
-      padding: 10px 20px;
-      border-radius: 5px;
-      background-color: rgba(255, 255, 255, 0.1);
-      color: #ffd700;
-      text-decoration: none;
-      font-size: 18px;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-    }
-
-    .socials a:hover, .skills-list span:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-      transform: scale(1.15);
-      box-shadow: 0px 5px 15px rgba(255, 255, 0, 0.3);
-    }
-
-    .skills-list {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .socials i, .skills-list i {
-      margin-right: 10px;
-    }
-
-    footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      text-align: center;
-      padding: 10px 0;
-      z-index: 100;
-    }
-
-    .copyright {
-      font-size: 16px;
-      color: #ffd700;
-      animation: fadeIn 2s ease-in-out infinite alternate;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0.5; }
-      to { opacity: 1; }
-    }
-  </style>
+        #startPage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
-
-  <nav>
-    <h1>Tᴏᴛᴀʟʟʏ_Bᴀᴅ</h1>
-    <ul>
-      <li><a href="#home" class="nav-link">Hᴏᴍᴇ</a></li>
-      <li><a href="#services" class="nav-link">Sᴇʀᴠɪᴄᴇs</a></li>
-      <li><a href="#skills" class="nav-link">Sᴋɪʟʟs</a></li>
-      <li><a href="#contact" class="nav-link">Cᴏɴᴛᴀᴄᴛ</a></li>
-      <li><a href="#socials" class="nav-link">Sᴏᴄɪᴀʟs</a></li>
-      <li><a href="https://docs.google.com/document/d/1vVRyKCs5yTblLjpo_N1l2451LSsCgd03Sw9VTpprFK8/edit?usp=sharing">Pʀᴏᴊᴇᴄᴛs</a></li>
-    </ul>
-  </nav>
-
-  <!-- Sections -->
-  <section id="home">
-    <h2>Wᴇʟᴄᴏᴍᴇ ᴛᴏ ᴍʏ Pᴏʀᴛғᴏʟɪᴏ</h2>
-    <p>I have <strong>4 years of experience</strong> in various aspects of Discord/Minecraft development, including extensive knowledge of coding practices, I am <strong>actively seeking development job opportunities</strong> where I can improve my skills in development. My goal is to obtain even more knowledge by helping out small or large Servers!</p>
-  </section>
-
-  <section id="services">
-    <h2>Mʏ Sᴇʀᴠɪᴄᴇs</h2>
-    <p>I offer a variety of services tailored to meet your needs, including:<br>
-       <strong>Discord Bot Development</strong>: Custom bot creation for enhancing your Discord server functionality and user experience.<br>
-       <strong>Minecraft Configuration</strong>: Expert configuration of servers to ensure optimal performance and player satisfaction.<br> 
-       <strong>Minecraft Development</strong>: Creative development solutions for mods and plugins that enhance gameplay and community engagement.<br>
-       <strong>Server Optimization</strong>: Optimizing your Server to ensure the best performance possible & very high quality.<br>
-       <strong>Resource Packs</strong>: Custom-made texture packs to enhance the visual experience on your servers.
-    </p>
-  </section>
-
-  <section id="skills">
-    <h2>Sᴋɪʟʟs</h2>
-    <p>Here are some of the key skills I bring to the table:</p>
-    <div class="skills-list">
-      <span><i class="fab fa-js-square"></i> JavaScript</span>
-      <span><i class="fab fa-node-js"></i> Node.js</span>
-      <span><i class="fab fa-html5"></i> HTML5</span>
-      <span><i class="fab fa-css3-alt"></i> CSS3</span>
-      <span><i class="fab fa-python"></i> Python</span>
-      <span><i class="fas fa-cube"></i> Minecraft Configuration</span>
+    <div id="startPage">
+        <h1>Online Drawing Tool</h1>
+        <button id="newProjectBtn">New Project</button>
+        <h2>Your Projects</h2>
+        <ul id="projectList"></ul>
     </div>
-  </section>
 
-  <section id="contact">
-    <h2>Cᴏɴᴛᴀᴄᴛ Mᴇ</h2>
-    <p>If you have any questions, are interested in collaboration, or need support, feel free to reach out to me at:<br>
-      <a href="mailto:totally.bad.social@gmail.com" style="color: #ffd700;">totally.bad.social@gmail.com</a><br>
-    </p>
-  </section>
-
-  <section id="socials">
-    <h2>Sᴏᴄɪᴀʟs</h2>
-    <div class="socials">
-      <a href="https://github.com/totallybadd" target="_blank"><i class="fab fa-github"></i>GitHub</a>
-      <a href="https://youtube.com/@totally_bad" target="_blank"><i class="fab fa-youtube"></i>YouTube</a>
-      <a href="javascript:void(0);" onclick="copyToClipboard('totally.bad')"><i class="fab fa-discord"></i>Discord</a>
+    <div id="drawingArea" style="display:none;">
+        <div class="toolbar">
+            <input type="color" id="colorPicker" value="#000000">
+            <input type="range" id="brushSize" min="1" max="100" value="5">
+            <select id="brushType">
+                <option value="brush">Brush</option>
+                <option value="eraser">Eraser</option>
+                <option value="rectangle">Rectangle</option>
+                <option value="circle">Circle</option>
+                <option value="line">Line</option>
+                <option value="marker">Marker</option>
+                <option value="highlighter">Highlighter</option>
+            </select>
+            <button id="clearCanvas">Clear</button>
+            <button id="download">Download</button>
+            <button id="backToStart">Back to Start</button>
+        </div>
+        <canvas id="drawingCanvas"></canvas>
     </div>
-  </section>
 
-  <footer>
-    <p class="copyright">
-      <span>&copy; 2024 Tᴏᴛᴀʟʟʏ_Bᴀᴅ. Aʟʟ ʀɪɢʜᴛs ʀᴇsᴇʀᴠᴇᴅ.</span>
-    </p>
-  </footer>
+    <script>
+        const canvas = document.getElementById('drawingCanvas');
+        const ctx = canvas.getContext('2d');
+        const colorPicker = document.getElementById('colorPicker');
+        const brushSize = document.getElementById('brushSize');
+        const brushType = document.getElementById('brushType');
+        const clearCanvas = document.getElementById('clearCanvas');
+        const downloadBtn = document.getElementById('download');
+        const backToStart = document.getElementById('backToStart');
+        const newProjectBtn = document.getElementById('newProjectBtn');
+        const projectList = document.getElementById('projectList');
 
-  <!-- Script  -->
-<script>
-  function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(() => {
-      alert("Discord username copied to clipboard: " + text);
-    });
-  }
+        let projects = JSON.parse(localStorage.getItem('projects')) || [];
+        let currentProject = null;
 
-  let timeout;
-  window.addEventListener('scroll', () => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      const sections = document.querySelectorAll('section');
-      let currentSection = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 80;
-        if (scrollY >= sectionTop) {
-          currentSection = section.getAttribute("id");
+        // Set canvas size
+        canvas.width = window.innerWidth - 20;
+        canvas.height = window.innerHeight - 100;
+
+        let drawing = false;
+        let startX, startY;
+
+        // Start drawing
+        canvas.addEventListener('mousedown', (event) => {
+            drawing = true;
+            startX = event.clientX - canvas.offsetLeft;
+            startY = event.clientY - canvas.offsetTop;
+            ctx.beginPath();
+        });
+
+        // Stop drawing
+        canvas.addEventListener('mouseup', () => {
+            drawing = false;
+            ctx.closePath();
+        });
+
+        // Draw on the canvas
+        canvas.addEventListener('mousemove', (event) => {
+            if (!drawing) return;
+
+            const x = event.clientX - canvas.offsetLeft;
+            const y = event.clientY - canvas.offsetTop;
+
+            ctx.lineWidth = brushSize.value; // Set brush size
+            ctx.lineCap = 'round'; // Round edges
+
+            if (brushType.value === 'brush') {
+                ctx.strokeStyle = colorPicker.value; // Set brush color
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+            } else if (brushType.value === 'eraser') {
+                ctx.strokeStyle = '#ffffff'; // Use white for erasing
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+            } else if (brushType.value === 'marker') {
+                ctx.strokeStyle = colorPicker.value;
+                ctx.globalAlpha = 0.5; // Set transparency
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                ctx.globalAlpha = 1; // Reset transparency
+            } else if (brushType.value === 'highlighter') {
+                ctx.strokeStyle = colorPicker.value;
+                ctx.globalAlpha = 0.3; // Set transparency for highlighter
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                ctx.globalAlpha = 1; // Reset transparency
+            }
+        });
+
+        // Draw shapes on mouse up
+        canvas.addEventListener('mouseup', (event) => {
+            if (drawing) {
+                const endX = event.clientX - canvas.offsetLeft;
+                const endY = event.clientY - canvas.offsetTop;
+                const width = endX - startX;
+                const height = endY - startY;
+
+                if (brushType.value === 'rectangle') {
+                    ctx.strokeStyle = colorPicker.value;
+                    ctx.strokeRect(startX, startY, width, height);
+                } else if (brushType.value === 'circle') {
+                    ctx.strokeStyle = colorPicker.value;
+                    ctx.beginPath();
+                    ctx.arc(startX, startY, Math.abs(width / 2), 0, Math.PI * 2);
+                    ctx.stroke();
+                } else if (brushType.value === 'line') {
+                    ctx.strokeStyle = colorPicker.value;
+                    ctx.beginPath();
+                    ctx.moveTo(startX, startY);
+                    ctx.lineTo(endX, endY);
+                    ctx.stroke();
+                }
+            }
+        });
+
+        // Clear the canvas
+        clearCanvas.addEventListener('click', () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        });
+
+        // Download the drawing
+        downloadBtn.addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.download = 'my_drawing.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+
+        // Create a new project
+        newProjectBtn.addEventListener('click', () => {
+            currentProject = { name: `Project ${projects.length + 1}`, drawing: canvas.toDataURL() };
+            projects.push(currentProject);
+            localStorage.setItem('projects', JSON.stringify(projects));
+            loadProjects();
+            showDrawingArea();
+        });
+
+        // Load projects
+        function loadProjects() {
+            projectList.innerHTML = '';
+            projects.forEach((project, index) => {
+                const li = document.createElement('li');
+                li.textContent = project.name;
+                li.onclick = () => loadProject(index);
+                projectList.appendChild(li);
+            });
         }
-      });
 
-      // Update URL without reloading the page
-      history.replaceState(null, null, '#' + currentSection);
-
-      // Add and remove active class
-      document.querySelectorAll('nav ul li a').forEach(link => {
-        link.classList.remove('active-link'); // Remove active class from all links
-        if (link.getAttribute('href').substring(1) === currentSection) {
-          link.classList.add('active-link'); // Add to the current section link
+        // Load selected project
+        function loadProject(index) {
+            const project = projects[index];
+            const img = new Image();
+            img.onload = () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(img, 0, 0);
+                showDrawingArea();
+            };
+            img.src = project.drawing;
         }
-      });
-    }, 100);
-  });
 
-  // Reveal sections on scroll function
-  window.addEventListener('scroll', () => {
-    document.querySelectorAll("section").forEach(section => {
-      const sectionTop = section.getBoundingClientRect().top;
-      if (sectionTop < window.innerHeight) {
-        section.classList.add("show");
-      }
-    });
-  });
-</script>
+        // Show drawing area
+        function showDrawingArea() {
+            document.getElementById('startPage').style.display = 'none';
+            document.getElementById('drawingArea').style.display = 'block';
+        }
 
+        // Go back to start page
+        backToStart.addEventListener('click', () => {
+            document.getElementById('drawingArea').style.display = 'none';
+            document.getElementById('startPage').style.display = 'flex';
+        });
+
+        // Initial load of projects
+        loadProjects();
+    </script>
 </body>
 </html>
