@@ -86,11 +86,6 @@
       transform: scale(1.1);
     }
 
-    /* Add this CSS for the active link */
-    .active-link {
-      color: #ffcc00;
-    }
-
     section {
       opacity: 0;
       padding: 100px 50px;
@@ -239,40 +234,41 @@
   </section>
 
   <section id="skills">
-    <h2>Mʏ Sᴋɪʟʟs</h2>
+    <h2>Sᴋɪʟʟs</h2>
+    <p>Here are some of the key skills I bring to the table:</p>
     <div class="skills-list">
-      <span><i class="fab fa-js"></i>JavaScript</span>
-      <span><i class="fab fa-java"></i>Java</span>
-      <span><i class="fas fa-code"></i>HTML & CSS</span>
-      <span><i class="fas fa-database"></i>SQL</span>
-      <span><i class="fab fa-discord"></i>Discord API</span>
-      <span><i class="fab fa-github"></i>GitHub</span>
+      <span><i class="fab fa-js-square"></i> JavaScript</span>
+      <span><i class="fab fa-node-js"></i> Node.js</span>
+      <span><i class="fab fa-html5"></i> HTML5</span>
+      <span><i class="fab fa-css3-alt"></i> CSS3</span>
+      <span><i class="fab fa-python"></i> Python</span>
+      <span><i class="fas fa-cube"></i> Minecraft Configuration</span>
     </div>
   </section>
 
   <section id="contact">
-    <h2>Get in Touch</h2>
-    <p>If you are interested in my services or would like to collaborate, please contact me at:
-       <a href="mailto:totallybad@example.com">totallybad@example.com</a>
+    <h2>Cᴏɴᴛᴀᴄᴛ Mᴇ</h2>
+    <p>If you have any questions, are interested in collaboration, or need support, feel free to reach out to me at:<br>
+      <a href="mailto:totally.bad.social@gmail.com" style="color: #ffd700;">totally.bad.social@gmail.com</a><br>
     </p>
   </section>
 
   <section id="socials">
-    <h2>Fɪɴᴅ ᴍᴇ ᴏɴ Sᴏᴄɪᴀʟs</h2>
+    <h2>Sᴏᴄɪᴀʟs</h2>
     <div class="socials">
-      <a href="https://twitter.com/username"><i class="fab fa-twitter"></i>Twitter</a>
-      <a href="https://github.com/username"><i class="fab fa-github"></i>GitHub</a>
-      <a href="https://discord.gg/invite"><i class="fab fa-discord"></i>Discord</a>
+      <a href="https://github.com/totallybadd" target="_blank"><i class="fab fa-github"></i>GitHub</a>
+      <a href="https://youtube.com/@totally_bad" target="_blank"><i class="fab fa-youtube"></i>YouTube</a>
+      <a href="javascript:void(0);" onclick="copyToClipboard('totally.bad')"><i class="fab fa-discord"></i>Discord</a>
     </div>
   </section>
 
   <footer>
-    <div class="copyright">
-      © 2023 Tᴏᴛᴀʟʟʏ_Bᴀᴅ - All Rights Reserved
-    </div>
+    <p class="copyright">
+      <span>&copy; 2024 Tᴏᴛᴀʟʟʏ_Bᴀᴅ. Aʟʟ ʀɪɢʜᴛs ʀᴇsᴇʀᴠᴇᴅ.</span>
+    </p>
   </footer>
 
-  <!-- JavaScript -->
+  <!-- Script  -->
   <script>
     function copyToClipboard(text) {
       navigator.clipboard.writeText(text).then(() => {
@@ -280,6 +276,7 @@
       });
     }
 
+    // Change URL and scroll stuff
     let timeout;
     window.addEventListener('scroll', () => {
       clearTimeout(timeout);
@@ -292,18 +289,11 @@
             currentSection = section.getAttribute("id");
           }
         });
-
         history.replaceState(null, null, '#' + currentSection);
-
-        document.querySelectorAll('nav ul li a').forEach(link => {
-          link.classList.remove('active-link'); 
-          if (link.getAttribute('href').substring(1) === currentSection) {
-            link.classList.add('active-link'); 
-          }
-        });
       }, 100);
     });
 
+    // Reveal sections on scroll thing
     window.addEventListener('scroll', () => {
       document.querySelectorAll("section").forEach(section => {
         const sectionTop = section.getBoundingClientRect().top;
