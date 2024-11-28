@@ -220,7 +220,6 @@
     </ul>
   </nav>
 
-  <!-- Sections -->
   <section id="home">
     <h2>Wᴇʟᴄᴏᴍᴇ ᴛᴏ ᴍʏ Pᴏʀᴛғᴏʟɪᴏ</h2>
     <p>I have <strong>a lot of experience</strong> in various aspects of Discord/Minecraft development, including extensive knowledge of coding practices, I am <strong>actively seeking development job opportunities</strong> where I can improve my skills in development. My goal is to obtain even more knowledge by helping out small or large Servers!</p>
@@ -229,11 +228,7 @@
   <section id="services">
     <h2>Mʏ Sᴇʀᴠɪᴄᴇs</h2>
     <p>I offer a variety of services tailored to meet your needs, including:<br>
-       <strong>Discord Bot Development</strong>: Custom bot creation for enhancing your Discord server functionality and user experience.<br>
-       <strong>Minecraft Configuration</strong>: Expert configuration of servers to ensure optimal performance and player satisfaction.<br> 
-       <strong>Minecraft Development</strong>: Creative development solutions for mods and plugins that enhance gameplay and community engagement.<br>
-       <strong>Server Optimization</strong>: Optimizing your Server to ensure the best performance possible & very high quality.<br>
-       <strong>Resource Packs</strong>: Custom-made texture packs to enhance the visual experience on your servers.
+       <strong>Discord Bot Development</strong>: I currently only offer Website Developement to Servers to make a functional connection to Socials & the Server Store!
     </p>
   </section>
 
@@ -272,15 +267,13 @@
     </p>
   </footer>
 
-  <!-- Script  -->
   <script>
     function copyToClipboard(text) {
       navigator.clipboard.writeText(text).then(() => {
         alert("Discord username copied to clipboard: " + text);
       });
     }
-
-    // Change URL and scroll stuff
+    
     let timeout;
     window.addEventListener('scroll', () => {
       clearTimeout(timeout);
@@ -297,7 +290,6 @@
       }, 100);
     });
 
-    // Reveal sections on scroll thing
     window.addEventListener('scroll', () => {
       document.querySelectorAll("section").forEach(section => {
         const sectionTop = section.getBoundingClientRect().top;
